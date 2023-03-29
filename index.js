@@ -9,7 +9,6 @@ const connectDB = require("./config/db")
 const { log, logEvent } = require("./middleware/logger")
 const { format } = require("date-fns")
 const { errorHandler } = require("./middleware/error")
-const { path } = require("path")
 connectDB()
 const app = express()
 const cookieParser = require("cookie-parser")
@@ -30,7 +29,7 @@ app.use(cors({
             // "http://localhost:5000",
             "http://localhost:5173",
             "https://www.google.com",
-            "https://railway-ecommerce-production-5676.up.railway.app/api"
+            "https://railway-ecommerce-production-5676.up.railway.app"
             // "https://www.google.com/"
         ]
         if (allowed.indexOf(o) !== -1 || !o) {
