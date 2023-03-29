@@ -1,6 +1,7 @@
 const express = require("express")
 require("dotenv").config({ path: "./.env" })
 const cors = require("cors")
+const path = require("path")
 const mongoose = require("mongoose")
 // const 
 
@@ -14,10 +15,10 @@ const app = express()
 const cookieParser = require("cookie-parser")
 const { adminProtected } = require("./middleware/auth")
 app.use(express.json())
-app.use(express.static("build"))
-app.use(express.static("public"))
-// app.use(express.static(path.join(__dirname, "build")))
-// app.use(express.static(path.join(__dirname, "public")))
+// app.use(express.static("build"))
+// app.use(express.static("public"))
+app.use(express.static(path.join(__dirname, "build")))
+app.use(express.static(path.join(__dirname, "public")))
 app.use(log)
 app.use(cookieParser())
 
@@ -29,6 +30,7 @@ app.use(cors({
             // "http://localhost:5000",
             "http://localhost:5173",
             "https://www.google.com",
+            "https://railway-ecommerce-production-5676.up.railway.app/api"
             // "https://www.google.com/"
         ]
         if (allowed.indexOf(o) !== -1 || !o) {
