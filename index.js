@@ -46,9 +46,10 @@ app.use("/api/employee", adminProtected, require("./routes/employeeRoute"))
 app.use("/api/auth", require("./routes/authRoute"))
 app.use("/api/products", require("./routes/productRoute"))
 app.use("*", (req, res) => {
-    res.status(400).json({
-        message: "404:resourse you are lokking for is not available"
-    })
+    res.sendFile(path.join(__dirname, "build/index.html"))
+    // res.status(400).json({
+    //     message: "404:resourse you are lokking for is not available"
+    // })
 })
 app.use(errorHandler)
 const PORT = process.env.PORT || 5000
